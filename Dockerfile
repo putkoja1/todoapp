@@ -1,9 +1,15 @@
-FROM node:8
+FROM node:latest
 
-WORKDIR /usr/src/todoapi
+RUN mkdir -p /usr/src/app
 
-ADD . .
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app
 
 RUN npm install
+
+COPY . /usr/src/app
+
+EXPOSE 3000
 
 CMD ["npm", "start"]
